@@ -17,21 +17,21 @@ document.onmouseover = function (e) {
     x = e.target.id;
 }
 
-//document.getElementById(x).onmouseover = function(){makeGreen(x)};
-//document.getElementById("table1").onmouseleave = function(){makeWhite("table1")};
-
-//document.getElementById("table1").onmouseover = function(event){
-//   let target = event.target;
-//  target.style.backgroundColor = 'pink';
-//}
-
-
 document.getElementById("table1").onmouseover = function (event) {
     let target = event.target;
-    if (target.className != "rowTop")
-        if (target.id!="A0" && target.id!="B0" && target.id!="C0" && target.id!="D0" && target.id!="E0" && target.id!="F0" && target.id!="G0" && target.id!="H0" && target.id!="I0" && target.id!="J0" && target.id!="rowTop0") {
-            makeGreen(target.id);
+    if (target.className != "rowTop" && !target.className.includes("col0")) {
+
+        //this need to be remade, now it makes 3 cubes green, but they do not change back to white.
+        //Although, the slice function is good for this situation (aka changing the id number)
+        //I'm tired now, will approach this tommorrow.
+        let k = parseInt(target.id.charAt(1));
+        for(let i = parseInt(target.id.charAt(1));i<3 + k; i++){
+            let x = target.id;
+            x = x.slice(0, -1);
+
+            makeGreen(x+i);
         }
+    }
 }
 
 document.getElementById("table1").onmouseout = function (event) {
