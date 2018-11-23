@@ -1,0 +1,87 @@
+﻿CSE1 13
+Balys Morkunas 4909836
+Matei Cristea-Enache 4900286
+
+1.1: telnet www.weer.nl 80
+     GET / HTTP/1.1
+     host:www.weer.nl
+     
+     Response: 200 OK
+1.2: Page is the same, except for telnet text on the top
+
+1.3: header that tells us if the proxy has served the website from the cache or not (first time visit or not)
+
+1.4: tells us the amount of time in seconds that the server will give us the same cached file on repeated entries
+
+2.1: It cuts the text of. Meaning only prints the number of characters you have provided. And if you provide more, but write less it only terminates after you've used up all of the allocated space.
+
+3.1: when reloading, browser sends password and user by itself
+3.2 telnet doesn't remember user/passwd as edge does
+
+4.1: Battleships
+
+4.2,4.3:
+
+http://en.battleship-game.org/
+
+thoughts: pros: fast-paced, clean interface
+                easy multiplayer link sharing
+                able to choose types of ships(russian/standard)
+                players online, updating on the fly 
+                archive of past designs
+                chatbox
+                unfancy animations
+                kinda clunky placement of ships
+ 		    unfancy victory screens
+
+
+https://codepen.io/collosic/pen/JpDfn
+
+design: no cruiser destroyed indicators too
+        bad animations
+        every info was done to a small text 	  window, that updated with each   	   	  click (loseinfo)
+   	  ships in fixed order(not good)
+        vertical design (bad)
+        true to the boardgame
+
+
+
+
+
+
+
+
+
+
+https://codepen.io/CodifyAcademy/full/ByBEOz/
+
+Quite different design.. Not in a good way. Also you play by typing in the coordinates, so not that great. Single player, meaning you play against the computer. You can't choose your own battleships which is a minus. Overall not a very excplicit implementation of the game, many more functions should be added like real opponent, time, ships sunk, animations, chat.Game is different design then we’ve seen, you can’t enter anything else except the coordinates, so thats is also good. Simple, so can run on more platforms.
+
+
+https://games.cdn.famobi.com/html5games/s/sea-battleship/v150/?fg_domain=play.famobi.com&fg_aid=A1000-1&fg_uid=c5eb3b17-06c0-477f-99a3-f7fa6dc844a0&fg_pid=4638e320-4444-4514-81c4-d80a8c662371&fg_beat=677&original_ref=https%3A%2F%2Fhtml5games.com%2FGame%2FSea-Battleship%2Fc5eb3b17-06c0-477f-99a3-f7fa6dc844a0
+
+
+Great animations, you can choose the layout yourself or randomize, has a theme throughout the whole game. Alot of functions are implemented like: game time, interactive board. It is nice to play. You can choose a computer or a random human as an oponent. Very great work. Some downsides would be that you do not see what ships are left from your opponent, takes long to load and requires HTML5.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.1
+
+
+
+5.2
+
+
