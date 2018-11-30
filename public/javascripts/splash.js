@@ -23,8 +23,8 @@ Fleet.prototype.getFleet = function () {
     return this.fleetArray;
 }
 
-Ship.prototype.getShip = function () {
-    return this.shipCoordinates;
+Ship.prototype.getShip = function (x) {
+    return this.shipCoordinates[x];
 }
 
 Ship.prototype.addCoordinates = function (xyString) {
@@ -141,6 +141,7 @@ document.getElementById("table1").onmouseout = function (event) {
         }
     }
 }
+
 //returns false if block noted by id is already used by another ship in our fleet; true else
 function overlapCheck(id, ) {
     for (var i = 0; i < fleet.length; i++) {
@@ -162,9 +163,6 @@ document.getElementById("table1").onclick = function (event) {
         k = 10;
     }
     if (target.className != "rowTop" && !target.className.includes("col0") && (k + shipSizes[shipSizesCnt] <= 11)) {
-
-
-
         //*********************************************************** */
         //pls refactor this to overlapCHECK
         var flag = 1;
@@ -175,24 +173,15 @@ document.getElementById("table1").onclick = function (event) {
                 flag = 0;
             }
         }
-
-
         /***************************************************************************** */
         if (flag == 1) {
             for (let i = parseInt(target.id.charAt(1)); i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(0, -1);
-
-
-
                 ship1.addCoordinates(x + i);
-
                 document.getElementById(x + i).classList.add("ship");
                 makeBlue(x + i);
             }
-
-
-
             fleet1.addShip(ship1);
             shipSizesCnt++;
             fleet1.printFleet();
@@ -201,12 +190,20 @@ document.getElementById("table1").onclick = function (event) {
 
 }
 
-
-
 document.getElementById("reset").onclick = function (event) {
-    console.log("asdasd");
-    location.reload(); //TEMPORARY
-
+    
+    for(let i = 0; i<fleet1.fleetArray.length; i++) {
+        for(let j = 0; j<fleet1.fleetArray[i].shipCoordinates.length; j++){
+            makeWhite(fleet1.fleetArray[i].getShip(j));
+            document.getElementById(fleet1.fleetArray[i].getShip(j)).classList.remove("ship");
+        }
+    }
+    shipSizesCnt = 0;
+    id = 0;
+    fleet1 = new Fleet(1);
+   // location.reload(); //TEMPORARY
+    //document.getElementsByClassName("ship").backgroundColor = "white";
+    
 }
 
 
