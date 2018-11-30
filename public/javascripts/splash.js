@@ -110,7 +110,7 @@ document.getElementById("table1").onmouseover = function (event) {
                     makeGreen(x + i);
                 }
                 else {
-                    
+
                     makeRed(x + i);
                 }
             }
@@ -157,12 +157,13 @@ document.getElementById("table1").onclick = function (event) {
     let target = event.target;
     id++;
     var ship1 = new Ship(id);
-    if (target.className != "rowTop" && !target.className.includes("col0")) {
+    let k = parseInt(target.id.charAt(1));
+    if (target.id.includes("10")) {
+        k = 10;
+    }
+    if (target.className != "rowTop" && !target.className.includes("col0") && (k + shipSizes[shipSizesCnt] <= 11)) {
 
-        let k = parseInt(target.id.charAt(1));
-        if (target.id.includes("10")) {
-            k = 10;
-        }
+
 
         //*********************************************************** */
         //pls refactor this to overlapCHECK
@@ -177,7 +178,7 @@ document.getElementById("table1").onclick = function (event) {
 
 
         /***************************************************************************** */
-        if (k + shipSizes[shipSizesCnt] <= 11 && flag == 1) {
+        if (flag == 1) {
             for (let i = parseInt(target.id.charAt(1)); i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(0, -1);
