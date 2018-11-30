@@ -5,8 +5,9 @@ TODO next:
     when limit reached message and no more new ships - DONE
     
     
-    think about last 2 columns bug
-    vertical mode
-    think about ship overlap and placement rules (not next to each other)
+    think about last 2 columns bug (make the last valid position stay on the board)
+    vertical mode 
+    think about ship overlap DONE
+    placement rules (not next to each other) -maybe get away with it
 
     improve code

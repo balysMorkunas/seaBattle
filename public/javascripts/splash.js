@@ -1,14 +1,14 @@
 var document;
-var x;
-var e;
+// var x;
+// var e;
 var id = 0;
 var shipSizesCnt = 0;
 var shipSizes = [5, 4, 3, 3, 2];
 
 function Ship(id) {
     this.id = id;
-    var shipArray = [];
-    this.shipArray = shipArray;
+    var shipCoordinates = [];
+    this.shipCoordinates = shipCoordinates;
 
 }
 
@@ -18,14 +18,23 @@ function Fleet(id) {
     this.fleetArray = fleetArray;
 
 }
+
+Fleet.prototype.getFleet = function () {
+    return this.fleetArray;
+}
+
+Ship.prototype.getShip = function () {
+    return this.shipCoordinates;
+}
+
 Ship.prototype.addCoordinates = function (xyString) {
-    this.shipArray.push(xyString);
+    this.shipCoordinates.push(xyString);
 }
 
 Ship.prototype.printShip = function () {
     console.log("SHIP id number " + this.id);
-    for (var i = 0; i < this.shipArray.length; i++) {
-        console.log(this.shipArray[i]);
+    for (var i = 0; i < this.shipCoordinates.length; i++) {
+        console.log(this.shipCoordinates[i]);
     }
 }
 
@@ -55,16 +64,22 @@ function makeWhite(id) {
     document.getElementById(id).style.backgroundColor = "white";
 }
 
-function getX(e) {
-    x = e.target.id;
+function makeRed(id) {
+    document.getElementById(id).style.backgroundColor = "red";
 }
 
-document.onmouseover = function (e) {
-    x = e.target.id;
-}
+// function getX(e) {
+//     x = e.target.id;
+// }
+
+// document.onmouseover = function (e) {
+//     x = e.target.id;
+// }
+
 
 document.getElementById("table1").onmouseover = function (event) {
     let target = event.target;
+    var flag = 1;
     if (target.className != "rowTop" && !target.className.includes("col0")) {
 
         let k = parseInt(target.id.charAt(1));
@@ -73,14 +88,33 @@ document.getElementById("table1").onmouseover = function (event) {
         }
         let i = k;
         if (k + shipSizes[shipSizesCnt] <= 11) {
+
+
+            //*********************************************************** */
+            //pls refactor this to overlapCHECK
+
+
             for (i = k; i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(0, -1);
-
-                if (!(document.getElementById(x + i).className.includes("ship"))) {
-                    makeGreen(x + i);
+                if ((document.getElementById(x + i).className.includes("ship"))) {
+                    flag = 0;
                 }
             }
+
+
+            for (i = k; i < shipSizes[shipSizesCnt] + k; i++) {
+                let x = target.id;
+                x = x.slice(0, -1);
+                if (flag == 1) {
+                    makeGreen(x + i);
+                }
+                else {
+                    
+                    makeRed(x + i);
+                }
+            }
+
 
         }
     }
@@ -100,7 +134,21 @@ document.getElementById("table1").onmouseout = function (event) {
                 if (!(document.getElementById(x + i).className.includes("ship"))) {
                     makeWhite(x + i);
                 }
+                if ((document.getElementById(x + i).className.includes("ship"))) {
+                    makeBlue(x + i);
+                }
             }
+        }
+    }
+}
+//returns false if block noted by id is already used by another ship in our fleet; true else
+function overlapCheck(id, ) {
+    for (var i = 0; i < fleet.length; i++) {
+        var ship1 = (fleet.getFleet).getShip;
+        for (var j = 0; j < ship1.length; j++) {
+            var coordString = ship1[j];
+            if (id == coordString)
+                console.log("overlap");
         }
     }
 }
@@ -115,14 +163,35 @@ document.getElementById("table1").onclick = function (event) {
         if (target.id.includes("10")) {
             k = 10;
         }
-        if (k + shipSizes[shipSizesCnt] <= 11) {
+
+        //*********************************************************** */
+        //pls refactor this to overlapCHECK
+        var flag = 1;
+        for (let i = parseInt(target.id.charAt(1)); i < shipSizes[shipSizesCnt] + k; i++) {
+            let x = target.id;
+            x = x.slice(0, -1);
+            if ((document.getElementById(x + i).className.includes("ship"))) {
+                flag = 0;
+            }
+        }
+
+
+        /***************************************************************************** */
+        if (k + shipSizes[shipSizesCnt] <= 11 && flag == 1) {
             for (let i = parseInt(target.id.charAt(1)); i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(0, -1);
+
+
+
                 ship1.addCoordinates(x + i);
+
                 document.getElementById(x + i).classList.add("ship");
                 makeBlue(x + i);
             }
+
+
+
             fleet1.addShip(ship1);
             shipSizesCnt++;
             fleet1.printFleet();
@@ -130,6 +199,8 @@ document.getElementById("table1").onclick = function (event) {
     }
 
 }
+
+
 
 //document.getElementById("reset").onclick = function (event) {
     //document.getElementById("table1").style.backgroundColor="";
