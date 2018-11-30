@@ -1,0 +1,11 @@
+TODO next:
+ 
+    add fleet limit (size 5)
+    different ship sizes
+    when limit reached message and no more new ships
+    
+    think about last 2 columns bug
+    vertical mode
+    think about ship overlap and placement rules (not next to each other)
+
+    improve code
