@@ -203,9 +203,10 @@ document.getElementById("table1").onclick = function (event) {
 
 
 
-//document.getElementById("reset").onclick = function (event) {
-    //document.getElementById("table1").style.backgroundColor="";
-//}
+document.getElementById("reset").onclick = function (event) {
+    console.log("asdasd");
+    location.reload(); //TEMPORARY
 
+}
 
 
