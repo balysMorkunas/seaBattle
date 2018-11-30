@@ -9,5 +9,10 @@ TODO next:
     vertical mode 
     think about ship overlap DONE
     placement rules (not next to each other) -maybe get away with it
+    reset button
 
+    
+    JQUERY
+    Game Screen
+    
     improve code
