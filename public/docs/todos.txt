@@ -1,8 +1,9 @@
 TODO next:
  
-    add fleet limit (size 5)
-    different ship sizes
-    when limit reached message and no more new ships
+    add fleet limit (size 5) - DONE
+    different ship sizes    - DONE
+    when limit reached message and no more new ships - DONE
+    
     
     think about last 2 columns bug
     vertical mode
