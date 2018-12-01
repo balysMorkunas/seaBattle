@@ -8,8 +8,8 @@ TODO next:
     think about last 2 columns bug (make the last valid position stay on the board)
     vertical mode 
     think about ship overlap DONE
-    placement rules (not next to each other) -maybe get away with it
-    reset button
+    placement rules (not next to each other) -DONE
+    reset button - DONE
 
     
     JQUERY
