@@ -77,6 +77,11 @@ function overlapCheck(id, numberRight, numberLeft) {
     if (id.includes("10")) {
         k = 10;
     }
+    if (k + numberRight > 11) {
+        k = k = 11 - numberRight;
+    }
+    if(document.getElementById(id).className.includes("col0"))
+            k=1;
 
     for (i = k; i < numberRight + k; i++) {
         let x = id;
@@ -117,8 +122,7 @@ document.getElementById("table1").onmouseover = function (event) {
     var flag = 1;
 
     //THis part excludes the cells that contain letters and numbers to NOT be colored
-
-    if (target.className != "rowTop" && !target.className.includes("col0")) {
+    if (target.className != "rowTop") {
         let k = parseInt(target.id.charAt(1));
 
         //This if guard takes care of the situation when our coordinate number becomes double digit.. 
@@ -126,57 +130,32 @@ document.getElementById("table1").onmouseover = function (event) {
         if (target.id.includes("10")) {
             k = 10;
         }
-        let i = k;
+
+        if (target.className.includes("col0"))
+            k = 1;
         //Here we make sure that the ship position does not go out of bounds of the grid
 
-        if (k + shipSizes[shipSizesCnt] <= 11) {
-            //if there is enough space on the board, start checking for overlap, if all good, print to the right
-
-            var overlapBoolean = overlapCheck(target.id, shipSizes[shipSizesCnt], 0);
-            //Finally coloring the needed cells.
-            for (i = k; i < shipSizes[shipSizesCnt] + k; i++) {
-                let x = target.id;
-                x = x.slice(0, 1);
-                if (overlapBoolean == true) {
-                    makeGreen(x + i);
-                }
-                else {
-
-                    makeRed(x + i);
-                }
-            }
-
+        if (k + shipSizes[shipSizesCnt] > 11) {
+            k = k = 11 - shipSizes[shipSizesCnt];
+            //console.log(k);
         }
-        else {
+        //if there is enough space on the board, start checking for overlap, if all good, print to the right
 
-            //first check for overlap, 11-k spaces to the right k+shipsize-11 spaces to the left
-            //if no overlap, paint                        
-
-            var boolean = overlapCheck(target.id, 11 - k, k + shipSizes[shipSizesCnt] - 11);
-
-            for (i = k; i < 11; i++) {
-                let x = target.id;
-                x = x.slice(0, 1);
-                if (boolean == true) {
-                    makeGreen(x + i);
-                }
-                else {
-                    makeRed(x + i);
-                }
+        var overlapBoolean = overlapCheck(target.id, shipSizes[shipSizesCnt], 0);
+        //Finally coloring the needed cells.
+        for (i = k; i < shipSizes[shipSizesCnt] + k; i++) {
+            let x = target.id;
+            x = x.slice(0, 1);
+            if (overlapBoolean == true) {
+                makeGreen(x + i);
             }
+            else {
 
-            for (i = k; i >= -shipSizes[shipSizesCnt] + 11; i--) {
-                let x = target.id;
-                x = x.slice(0, 1);
-                if (boolean == true) {
-                    makeGreen(x + i);
-                }
-                else {
-
-                    makeRed(x + i);
-                }
+                makeRed(x + i);
             }
         }
+
+
     }
 }
 //This function does mainly the opposite of the onhover function. But the cells marked with class
@@ -184,15 +163,23 @@ document.getElementById("table1").onmouseover = function (event) {
 
 document.getElementById("table1").onmouseout = function (event) {
     let target = event.target;
-    if (target.className != "rowTop" && !target.className.includes("col0")) {
+    if (target.className != "rowTop") {
         let k = parseInt(target.id.charAt(1));
         if (target.id.includes("10")) {
             k = 10;
         }
         // Checking for out of bounds, then selecting appropriate cells with Slice(), coloring.
 
+        if (k + shipSizes[shipSizesCnt] > 11) {
+            k = k = 11 - shipSizes[shipSizesCnt];
+            //console.log(k);
+        }
+
+        if (target.className.includes("col0"))
+            k = 1;
+
         if (k + shipSizes[shipSizesCnt] <= 11) {
-            for (let i = parseInt(target.id.charAt(1)); i < shipSizes[shipSizesCnt] + k; i++) {
+            for (let i = k; i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(0, 1);
                 if (!(document.getElementById(x + i).className.includes("ship"))) {
@@ -203,32 +190,7 @@ document.getElementById("table1").onmouseout = function (event) {
                 }
             }
         }
-        //
-        else {
 
-            for (i = k; i < 11; i++) {
-                let x = target.id;
-                x = x.slice(0, 1);
-                if (!(document.getElementById(x + i).className.includes("ship"))) {
-                    makeWhite(x + i);
-                }
-                if ((document.getElementById(x + i).className.includes("ship"))) {
-                    makeBlue(x + i);
-                }
-            }
-
-            for (i = k; i >= -shipSizes[shipSizesCnt] + 11; i--) {
-                let x = target.id;
-                x = x.slice(0, 1);
-                if (!(document.getElementById(x + i).className.includes("ship"))) {
-                    makeWhite(x + i);
-                }
-                if ((document.getElementById(x + i).className.includes("ship"))) {
-                    makeBlue(x + i);
-                }
-            }
-
-        }
     }
 }
 
@@ -241,11 +203,17 @@ document.getElementById("table1").onclick = function (event) {
     if (target.id.includes("10")) {
         k = 10;
     }
+    if (k + shipSizes[shipSizesCnt] > 11) {
+        k = k = 11 - shipSizes[shipSizesCnt];
+        //console.log(k);
+    }
+    if (target.className.includes("col0"))
+        k = 1;
     if (target.className != "rowTop" && !target.className.includes("col0") && (k + shipSizes[shipSizesCnt] <= 11)) {
 
         var flag = overlapCheck(target.id, shipSizes[shipSizesCnt], 0);
         if (flag == true) {
-            for (let i = parseInt(target.id.charAt(1)); i < shipSizes[shipSizesCnt] + k; i++) {
+            for (let i = k; i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(0, 1);
                 ship1.addCoordinates(x + i);
@@ -257,32 +225,6 @@ document.getElementById("table1").onclick = function (event) {
             fleet1.addShip(ship1);
             shipSizesCnt++;
             fleet1.printFleet();
-        }
-    }
-    if (target.className != "rowTop" && !target.className.includes("col0") && (k + shipSizes[shipSizesCnt] > 11)) {
-        var flag = overlapCheck(target.id, 11 - k, k + shipSizes[shipSizesCnt] - 11);
-        if (flag == true) {
-            console.log(parseInt(target.id.charAt(1)) + 11 - shipSizesCnt);
-            for (let i = parseInt(target.id.charAt(1)); i < 11; i++) {
-                let x = target.id;
-                x = x.slice(0, 1);
-                ship1.addCoordinates(x + i);
-                document.getElementById(x + i).classList.add("ship");
-                makeBlue(x + i);
-            }
-
-            for (let i = parseInt(target.id.charAt(1)); i >= -shipSizes[shipSizesCnt] + 11; i--) {
-                let x = target.id;
-                x = x.slice(0, 1);
-                ship1.addCoordinates(x + i);
-                document.getElementById(x + i).classList.add("ship");
-                makeBlue(x + i);
-            }
-
-            fleet1.addShip(ship1);
-            shipSizesCnt++;
-            fleet1.printFleet();
-
         }
     }
 
