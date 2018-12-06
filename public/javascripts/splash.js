@@ -69,9 +69,6 @@ function makeRed(id) {
     document.getElementById(id).style.backgroundColor = "red";
 }
 
-function nextChar(c) {
-    return String.fromCharCode(c.charCodeAt(0) + 1);
-}
 
 
 
@@ -87,7 +84,7 @@ function overlapCheck(id, numberRight, vertical) {
             k = 10;
         }
         if (k + numberRight > 11) {
-            k   = 11 - numberRight;
+            k = 11 - numberRight;
         }
         if (document.getElementById(id).className.includes("col0"))
             k = 1;
@@ -103,7 +100,8 @@ function overlapCheck(id, numberRight, vertical) {
 
         }
     }
-
+    // k here is in ASCII code. Converted by charCodeAt(); and later converted back to a string
+    // to get the coordinate back.
     if (vertical == true) {
         var k = id.charCodeAt(0);
         if (k + numberRight > "K".charCodeAt(0)) {
@@ -122,27 +120,20 @@ function overlapCheck(id, numberRight, vertical) {
 
         return true;
     }
-    console.log("overlap");
+   // console.log("overlap");
     return false;
 }
 
-//This function colors the appropriate amount of ship cells when hovored over
-
-
 document.getElementById("rotate").onclick = function (event) {
     vertical = !vertical;
-    console.log(vertical);
+    //console.log(vertical);
 }
 
 
-
+//This function colors the appropriate amount of ship cells when hovored over
 document.getElementById("table1").onmouseover = function (event) {
     let target = event.target;
     var flag = 1;
-    if (vertical == true) {
-        //console.log("vertical");
-    }
-
     //THis part excludes the cells that contain letters and numbers to NOT be colored
     if (target.className != "rowTop") {
         var k = parseInt(target.id.charAt(1));
@@ -165,11 +156,11 @@ document.getElementById("table1").onmouseover = function (event) {
 
         var overlapBoolean = overlapCheck(target.id, shipSizes[shipSizesCnt], vertical);
         //Finally coloring the needed cells.
-        if (vertical == false){
+
+        if (vertical == false) {
             for (var i = k; i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(0, 1);
-
                 if (overlapBoolean == true) {
                     makeGreen(x + i);
                 }
@@ -184,9 +175,7 @@ document.getElementById("table1").onmouseover = function (event) {
             if (k + shipSizes[shipSizesCnt] > "K".charCodeAt(0)) {
                 k = "K".charCodeAt(0) - shipSizes[shipSizesCnt];
             }
-            if (target.className.includes("col0"))
-                k++;    
-            
+
             for (var i = k; i < shipSizes[shipSizesCnt] + k; i++) {
                 let x = target.id;
                 x = x.slice(1);
@@ -196,11 +185,9 @@ document.getElementById("table1").onmouseover = function (event) {
                 else {
                     makeRed((String.fromCharCode(i) + x));
                 }
-                console.log(String.fromCharCode(i)+x);
+                //console.log(String.fromCharCode(i) + x);
             }
         }
-
-
     }
 }
 //This function does mainly the opposite of the onhover function. But the cells marked with class
@@ -260,7 +247,7 @@ document.getElementById("table1").onmouseout = function (event) {
     }
 }
 
-
+//
 document.getElementById("table1").onclick = function (event) {
     let target = event.target;
     id++;

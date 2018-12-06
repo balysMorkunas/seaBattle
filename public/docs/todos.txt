@@ -11,8 +11,16 @@ TODO next:
     placement rules (not next to each other) -DONE
     reset button - DONE
 
+
     
     JQUERY
     Game Screen
     
     improve code
+
+    12/06:
+
+    1) Game object to count how many ongoing games are there (See Asgn2 3.5 hint section).
+    2) General game statistics (on going games, total ships sunk, games won)
+    3) In-game stats (ships left, accuracy, succesful shots)
+    

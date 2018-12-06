@@ -8,4 +8,6 @@ td{
 }
 table{
     border-spacing: 0;
+    display: inline-block;
+    float: left;
 }
