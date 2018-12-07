@@ -24,3 +24,8 @@ TODO next:
     2) General game statistics (on going games, total ships sunk, games won)
     3) In-game stats (ships left, accuracy, succesful shots)
     
+    12/07:
+
+    1) If you press start, then waiting screen pops up (Play button only becomes pressable when all ships have been placed, client side). 
+    2) Make a connection logic between player A and player B between.
+    3) Move them both in a game by creating a new game instace.
