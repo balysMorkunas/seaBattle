@@ -184,12 +184,24 @@
         <button id = "startButton" type="button">
             <h2>START</h2>
         </button>
+        <div id = "hi">
+
+        </div>>
     </div>
 
 
     <script src="javascripts/splash.js" type=""></script>
 
-
+<script>
+      var socket = new WebSocket("ws://localhost:3002");
+            socket.onmessage = function(event){
+                document.getElementById("hi").innerHTML = event.data;
+            }
+            socket.onopen = function(){
+                socket.send("Hello from the client!");
+                document.getElementById("hi").innerHTML = "Sending a first message to the server ...";
+            };
+</script>
 
 </body>
 
