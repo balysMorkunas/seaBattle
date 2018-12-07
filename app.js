@@ -31,7 +31,7 @@ var websockets = {};//property: websocket, value: game
 var currentGame = new Game(id++);
 var connectionID = 0; //each websocket recieves unique ID.
 
-wss.on ("connection", function connection(ws) {
+wss.on("connection", function connection(ws) {
 
 
   // setInterval(function () {
@@ -48,6 +48,10 @@ wss.on ("connection", function connection(ws) {
   let con = ws;
   con.id = connectionID++;
   let playerType = currentGame.addPlayer(con);
+  if (playerType == "N") {
+    currentGame = new Game(id++);
+    playerType = currentGame.addPlayer(con);
+  }
   websockets[con.id] = currentGame;
   console.log(playerType);
   console.log("Player %s placed in game %s as %s", con.id, currentGame.id, playerType);

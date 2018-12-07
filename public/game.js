@@ -8,15 +8,22 @@ var game = function (gameID) {
 
 };
 
+game.prototype.hasTwoConnectedPlayers = function() {
+    return this.gameState == "2 JOINT";
+}
+
 game.prototype.addPlayer = function(p) {
         
     if(this.playerA == null) {
         this.playerA = p;
         return "A";
     }
-    else {
+    else if(this.playerB == null) {
         this.playerB = p;
+        //send game somewhere
         return "B";
+    }else{
+        return "N";
     }
 };
 
