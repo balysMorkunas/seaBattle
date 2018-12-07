@@ -7,6 +7,8 @@ var shipSizes = [5, 4, 3, 3, 2];
 var fleet1 = new Fleet(1);
 var vertical = 0;
 
+document.getElementById("startButton").disabled = true;
+
 //Constructor for the class Ship (takes an ID as an argument to count how many ships we have)
 function Ship(id) {
     this.id = id;
@@ -120,7 +122,7 @@ function overlapCheck(id, numberRight, vertical) {
 
         return true;
     }
-   // console.log("overlap");
+    // console.log("overlap");
     return false;
 }
 
@@ -132,6 +134,8 @@ document.getElementById("rotate").onclick = function (event) {
 
 //This function colors the appropriate amount of ship cells when hovored over
 document.getElementById("table1").onmouseover = function (event) {
+
+
     let target = event.target;
     var flag = 1;
     //THis part excludes the cells that contain letters and numbers to NOT be colored
@@ -194,6 +198,10 @@ document.getElementById("table1").onmouseover = function (event) {
 //ship must stay blue so we exclude them with an if statement
 
 document.getElementById("table1").onmouseout = function (event) {
+
+    if (shipSizesCnt >= shipSizes.length) {
+        document.getElementById("startButton").disabled = false;
+    }   
     let target = event.target;
     if (target.className != "rowTop") {
         var k = parseInt(target.id.charAt(1));
@@ -249,6 +257,7 @@ document.getElementById("table1").onmouseout = function (event) {
 
 //
 document.getElementById("table1").onclick = function (event) {
+
     let target = event.target;
     id++;
     var ship1 = new Ship(id);

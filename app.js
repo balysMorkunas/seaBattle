@@ -10,6 +10,7 @@ var app = express();
 
 app.get("/", indexRouter);
 app.get("/play", indexRouter);
+var id = 0;
 
 /*CLAUDIA'S WAY*/
 // app.get("/", (req, res) => {
@@ -17,15 +18,20 @@ app.get("/play", indexRouter);
 // });
 
 app.use(express.static(__dirname + "/public"));
-var server = http.createServer(app).listen(port, function() {
+var server = http.createServer(app).listen(port, function () {
   console.log("Listening on port: " + port);
 })
 
-const wss = new websocket.Server({server});
+const wss = new websocket.Server({ server });
+var websockets = {};//property: websocket, value: game
 
-wss.on("connection", function(ws) {
-  
-  setTimeout(function() {
+var currentGame = new Game(id++);
+var connectionID = 0; //each websocket recieves unique ID.
+
+wss.on("connection", function connection(ws) {
+
+
+  setTimeout(function () {
     console.log("Connection state: " + ws.readyState);
     ws.send("Thanks for the message. -- Server.");
     ws.close();
