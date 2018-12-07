@@ -4,6 +4,7 @@ var http = require("http");
 var indexRouter = require("./routes/index");
 var messages = require("./public/javascripts/messages");
 var websocket = require("ws");
+var Game = require("./game");
 
 var port = process.argv[2];
 var app = express();
@@ -25,7 +26,7 @@ var server = http.createServer(app).listen(port, function () {
 const wss = new websocket.Server({ server });
 var websockets = {};//property: websocket, value: game
 
-var currentGame = new Game(id++);
+//var currentGame = new Game(id++);
 var connectionID = 0; //each websocket recieves unique ID.
 
 wss.on("connection", function connection(ws) {

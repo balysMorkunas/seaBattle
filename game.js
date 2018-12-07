@@ -1,5 +1,7 @@
+var WebSocket = require("ws");
+var document;
 /* every game has two players, identified by their WebSocket */
-var game = function (gameID) {
+function Game (gameID) {
     this.playerA = null;
     this.playerB = null;
     this.id = gameID;
@@ -8,10 +10,10 @@ var game = function (gameID) {
 
 var socket = new WebSocket("ws://localhost:3002");
 socket.onmessage = function (event) {
-    document.getElementById("table1").innerHTML = event.data;
+    //document.getElementById("table1").innerHTML = event.data;
 }
 
 socket.onopen = function () {
     socket.send("Hello from the client!");
-    document.getElementById("table1").innerHTML = "Sending a first message to the server ...";
+   // document.getElementById("table1").innerHTML = "Sending a first message to the server ...";
 };
