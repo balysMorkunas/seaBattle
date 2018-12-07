@@ -201,7 +201,7 @@ document.getElementById("table1").onmouseout = function (event) {
 
     if (shipSizesCnt >= shipSizes.length) {
         document.getElementById("startButton").disabled = false;
-    }   
+    }
     let target = event.target;
     if (target.className != "rowTop") {
         var k = parseInt(target.id.charAt(1));
@@ -323,4 +323,25 @@ document.getElementById("reset").onclick = function (event) {
     shipSizesCnt = 0;
     id = 0;
     fleet1 = new Fleet(1);
+}
+
+document.getElementById("temp").onclick = function (event) {
+    var socket = new WebSocket("ws://localhost:3002");
+    socket.onopen = function (event) {
+
+        socket.send("READY");
+        socket.onmessage = function(event) {
+            if(event.data === "A_GAME") {
+                //pls redirect me to /play at id currentgame
+                window.location.href = "/play";
+            }
+            if(event.data === "B_GAME_START"){
+                //pls redirect me to /play and start game at id current
+
+                window.location.href = "/play";
+
+            }
+        }
+    };
+
 }

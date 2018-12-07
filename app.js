@@ -1,10 +1,10 @@
-
 var express = require("express");
 var http = require("http");
 var indexRouter = require("./routes/index");
 var messages = require("./public/javascripts/messages");
 var websocket = require("ws");
 var Game = require("./public/game");
+
 
 var port = process.argv[2];
 var app = express();
@@ -28,6 +28,7 @@ var server = http.createServer(app);
 const wss = new websocket.Server({ server });
 var websockets = {};//property: websocket, value: game
 
+
 var currentGame = new Game(id++);
 var connectionID = 0; //each websocket recieves unique ID.
 
@@ -42,20 +43,35 @@ wss.on("connection", function connection(ws) {
   // }, 2000);
   // ws.on("message", function incoming(message) {
   //   console.log("[LOG]" + message);
+
   // });
 
 
   let con = ws;
   con.id = connectionID++;
-  let playerType = currentGame.addPlayer(con);
-  if (playerType == "N") {
-    currentGame = new Game(id++);
-    playerType = currentGame.addPlayer(con);
-  }
-  websockets[con.id] = currentGame;
-  console.log(playerType);
-  console.log("Player %s placed in game %s as %s", con.id, currentGame.id, playerType);
+  ws.onmessage = function (event) {
+    var flag = 0;
+    //console.log(event.data);
+    if (event.data === "READY") {
+      let playerType = currentGame.addPlayer(con);
+      if (playerType === "A"){
 
+        ws.send("A_GAME");
+        
+      }
+      if (playerType === "B"){
+        ws.send("B_GAME_START");
+      }
+      if (playerType === "N") {
+        
+        currentGame = new Game(id++);
+        playerType = currentGame.addPlayer(con);
+      }
+      websockets[con.id] = currentGame;
+      //console.log(playerType);
+      console.log("Player %s placed in game %s as %s", con.id, currentGame.id, playerType);
+    }
+  }
 
 });
 

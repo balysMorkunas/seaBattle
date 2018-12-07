@@ -180,7 +180,7 @@
     <div id="rightSide">
         <button type="button">Randomize</button>
         <button type="button">Players</button>
-        <button type="button">Rules</button>
+        <button id = "temp" type="button">Rules</button>
         <button id = "startButton" type="button">
             <h2>START</h2>
         </button>
@@ -193,14 +193,14 @@
     <script src="javascripts/splash.js" type=""></script>
 
 <script>
-      var socket = new WebSocket("ws://localhost:3002");
-            socket.onmessage = function(event){
-                document.getElementById("hi").innerHTML = event.data;
-            }
-            socket.onopen = function(){
-                socket.send("Hello from the client!");
-                document.getElementById("hi").innerHTML = "Sending a first message to the server ...";
-            };
+      //var socket = new WebSocket("ws://localhost:3002");
+            // socket.onmessage = function(event){
+            //     document.getElementById("hi").innerHTML = event.data;
+            // }
+            // socket.onopen = function(){
+            //     socket.send("Hello from the client!");
+            //     document.getElementById("hi").innerHTML = "Sending a first message to the server ...";
+            // };
 </script>
 
 </body>
