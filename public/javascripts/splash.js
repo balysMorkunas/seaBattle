@@ -7,7 +7,7 @@ var shipSizes = [5, 4, 3, 3, 2];
 var fleet1 = new Fleet(1);
 var vertical = 0;
 
-document.getElementById("startButton").disabled = true;
+//document.getElementById("startButton").disabled = true;
 
 //Constructor for the class Ship (takes an ID as an argument to count how many ships we have)
 function Ship(id) {
@@ -23,6 +23,8 @@ function Fleet(id) {
     this.fleetArray = fleetArray;
 
 }
+
+
 //Getter for a fleet object. Returns the Ships in an array
 Fleet.prototype.getFleet = function () {
     return this.fleetArray;
@@ -94,7 +96,6 @@ function overlapCheck(id, numberRight, vertical) {
         for (i = k; i < numberRight + k; i++) {
             let x = id;
             x = x.slice(0, 1);
-
 
             if ((document.getElementById(x + i).className.includes("ship"))) {
                 flag = 0;

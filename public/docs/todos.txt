@@ -32,10 +32,20 @@ TODO next:
 
     12/08:
 
-    1) Make sure that they are both in the same game.
-    2) Send JSON fleets.
-    3) Write JS client-sided to place your ship on YOUR board.
-    4) More client-side code to recognize targeting opponents ships and to sent that to server.
-    5) Server-side code checks miss/hit and gives appropriate next turn.
-    
+    1) Make sure that they are both in the same game. DONE
+    2) Send JSON fleets. DONE
+    3) Write JS client-sided to place your ship on YOUR board. DONE
+    4) More client-side code to recognize targeting opponents ships and to sent that to server. DONE
+    5) SERVER SIDE:  accept A(/B)_TARGET_B5 message and send back to both clients A_HIT_B5 or A_MISS_B5 (based on fleetA, fleetB) DONE
+    6) CLIENT SIDE: receive A(/B)_hit_B5 and render shot on my own or on opponents board
+    6.5) implement graying out opponent board while waiting
+    7) SERVER SIDE: after each hit, make sure to check if a ship has been sunk; if yes send A_SUNK_SHIP3 (where 3 is the size of the ship)
+    8) Client: interpret ships sunk
+    9) server: if a player has  sunk 5 ships, give victory and losing screen to respective players
+
+    -make sure several ongoing games work at the same time
     - fix port hardcoded
+    - when targeting make sure both are in game
+    - make placement 1 apart rule
+    -fix errors with make color
+    -fix step 6
