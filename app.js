@@ -45,8 +45,7 @@ wss.on("connection", function connection(ws) {
   //   console.log("[LOG]" + message);
 
   // });
-
-
+  
   let con = ws;
   con.id = connectionID++;
   ws.onmessage = function (event) {
@@ -54,16 +53,16 @@ wss.on("connection", function connection(ws) {
     //console.log(event.data);
     if (event.data === "READY") {
       let playerType = currentGame.addPlayer(con);
-      if (playerType === "A"){
+      if (playerType === "A") {
 
         ws.send("A_GAME");
-        
+
       }
-      if (playerType === "B"){
+      if (playerType === "B") {
         ws.send("B_GAME_START");
       }
       if (playerType === "N") {
-        
+
         currentGame = new Game(id++);
         playerType = currentGame.addPlayer(con);
       }
@@ -72,6 +71,7 @@ wss.on("connection", function connection(ws) {
       console.log("Player %s placed in game %s as %s", con.id, currentGame.id, playerType);
     }
   }
+
 
 });
 

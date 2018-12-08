@@ -326,22 +326,9 @@ document.getElementById("reset").onclick = function (event) {
 }
 
 document.getElementById("temp").onclick = function (event) {
-    var socket = new WebSocket("ws://localhost:3002");
-    socket.onopen = function (event) {
-
-        socket.send("READY");
-        socket.onmessage = function(event) {
-            if(event.data === "A_GAME") {
-                //pls redirect me to /play at id currentgame
-                window.location.href = "/play";
-            }
-            if(event.data === "B_GAME_START"){
-                //pls redirect me to /play and start game at id current
-
-                window.location.href = "/play";
-
-            }
-        }
-    };
-
+    
+    var myFleet = JSON.stringify(fleet1);
+    var encodedFleet = btoa(myFleet);
+    window.location.href = "/play?fleet=" + encodedFleet;
+   
 }

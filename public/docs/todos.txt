@@ -38,3 +38,4 @@ TODO next:
     4) More client-side code to recognize targeting opponents ships and to sent that to server.
     5) Server-side code checks miss/hit and gives appropriate next turn.
     
+    - fix port hardcoded

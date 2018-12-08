@@ -8,6 +8,10 @@ td{
 }
 table{
     border-spacing: 0;
-    /* display: inline-block;
-    float: left; */
+    display: inline-block; 
+}
+#table1{
+    position:relative;
+    float: left;
+    margin-right: 3em;
 }
