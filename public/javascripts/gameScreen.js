@@ -92,12 +92,11 @@ socket.onopen = function (event) {
     console.log("I am ready");
     socket.onmessage = function (event) {
 
+        
         if(event.data.includes("A_WIN") && OwnPlayer == "A") {
             alert("YOU WON");
             console.log("A_WON");
-            
         }
-
         if(event.data.includes("A_WIN") && OwnPlayer == "B") {
             alert("YOU LOST");
             console.log("A_WON");
@@ -110,7 +109,8 @@ socket.onopen = function (event) {
             alert("YOU LOST");
             console.log("B_WON");
         }
-
+        if(event.data.includes("WIN"))
+            window.location = '/';
         
         
         if (event.data === "A_GAME") {
