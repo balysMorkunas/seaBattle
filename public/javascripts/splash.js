@@ -7,7 +7,7 @@ var shipSizes = [5, 4, 3, 3, 2];
 var fleet1 = new Fleet(1);
 var vertical = 0;
 
-//document.getElementById("startButton").disabled = true;
+document.getElementById("startButton").disabled = true;
 
 //Constructor for the class Ship (takes an ID as an argument to count how many ships we have)
 function Ship(id) {
@@ -326,7 +326,7 @@ document.getElementById("reset").onclick = function (event) {
     fleet1 = new Fleet(1);
 }
 
-document.getElementById("temp").onclick = function (event) {
+document.getElementById("startButton").onclick = function (event) {
     
     var myFleet = JSON.stringify(fleet1);
     var encodedFleet = btoa(myFleet);

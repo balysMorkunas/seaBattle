@@ -49,14 +49,12 @@ TODO next:
 
     10) handle game endings, kick players out to splash screen, delete web sockets
     11) ESLINT BOI
-
-
+    Thijs feedback: rotate on right click, message while waiting for other player, make tables bigger, blowup animation + sound
+    12) CSS, 
+    13) Stats (templating, cookies)
 
 
 
     -make sure several ongoing games work at the same time
     - fix port hardcoded
-    - when targeting make sure both are in game
     - make placement 1 apart rule //no need
-    -fix errors with make color
-    -fix step 6

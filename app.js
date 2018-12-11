@@ -121,7 +121,7 @@ wss.on("connection", function connection(ws) {
         gameObj.playerB.send("A_HIT_" + coordinate);
 
         gameObj.countA++;
-        if(gameObj.countA == 1){
+        if(gameObj.countA == 17){
            gameObj.playerA.send("A_WIN");
            gameObj.playerB.send("A_WIN");
         }
