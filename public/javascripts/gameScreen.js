@@ -91,6 +91,26 @@ socket.onopen = function (event) {
     socket.send("READY");
     console.log("I am ready");
     socket.onmessage = function (event) {
+
+        if(event.data.includes("A_WIN") && OwnPlayer == "A") {
+            alert("YOU WON");
+            console.log("A_WON");
+            
+        }
+
+        if(event.data.includes("A_WIN") && OwnPlayer == "B") {
+            alert("YOU LOST");
+            console.log("A_WON");
+        }
+        if(event.data.includes("B_WIN") && OwnPlayer == "B") {
+            alert("YOU WON");
+            console.log("B_WON");
+        }
+        if(event.data.includes("B_WIN") && OwnPlayer == "A") {
+            alert("YOU LOST");
+            console.log("B_WON");
+        }
+
         
         
         if (event.data === "A_GAME") {
@@ -215,10 +235,8 @@ socket.onopen = function (event) {
             //selectingInterface("A");
         }
 
-        if(event.data.includes("A_WIN") && OwnPlayer == "A") {
-            alert("YOU WON");
-            console.log("A_WON");
-        }
+       
+
 
         if (OwnPlayer == "A" || OwnPlayer == "B") {
             console.log("getting a new selecting interface");
@@ -233,6 +251,8 @@ socket.onopen = function (event) {
                 console.log("A TURN MUDDAFUCKAS");
             }
         }
+
+        
 
     }
 

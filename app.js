@@ -121,7 +121,10 @@ wss.on("connection", function connection(ws) {
         gameObj.playerB.send("A_HIT_" + coordinate);
 
         gameObj.countA++;
-        if(gameObj.countA == 1) gameObj.playerA.send("A_WIN");
+        if(gameObj.countA == 1){
+           gameObj.playerA.send("A_WIN");
+           gameObj.playerB.send("A_WIN");
+        }
         console.log("A HIT");
       }
       else {
@@ -139,7 +142,10 @@ wss.on("connection", function connection(ws) {
         gameObj.playerB.send("B_HIT_" + coordinate);
 
         gameObj.countB++;
-        if(gameObj.countB == 17) gameObj.playerB.send("B_WIN");
+        if(gameObj.countB == 17){
+           gameObj.playerB.send("B_WIN");
+           gameObj.playerA.send("B_WIN");
+        }
         console.log("B HIT");
 
       }

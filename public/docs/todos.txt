@@ -37,15 +37,26 @@ TODO next:
     3) Write JS client-sided to place your ship on YOUR board. DONE
     4) More client-side code to recognize targeting opponents ships and to sent that to server. DONE
     5) SERVER SIDE:  accept A(/B)_TARGET_B5 message and send back to both clients A_HIT_B5 or A_MISS_B5 (based on fleetA, fleetB) DONE
-    6) CLIENT SIDE: receive A(/B)_hit_B5 and render shot on my own or on opponents board
-    6.5) implement graying out opponent board while waiting
-    7) SERVER SIDE: after each hit, make sure to check if a ship has been sunk; if yes send A_SUNK_SHIP3 (where 3 is the size of the ship)
-    8) Client: interpret ships sunk
-    9) server: if a player has  sunk 5 ships, give victory and losing screen to respective players
+    6) CLIENT SIDE: receive A(/B)_hit_B5 and render shot on my own or on opponents board DONE
+    6.5) implement graying out opponent board while waiting DONE
+    7) SERVER SIDE: after each hit, make sure to check if a ship has been sunk; if yes send A_SUNK_SHIP3 (where 3 is the size of the ship) //maybe skip
+    8) Client: interpret ships sunk //maybe skip
+    9) server: if a player has  sunk 5 ships, give victory and losing screen to respective players DONE
+
+
+
+
+
+    10) handle game endings, kick players out to splash screen, delete web sockets
+    11) ESLINT BOI
+
+
+
+
 
     -make sure several ongoing games work at the same time
     - fix port hardcoded
     - when targeting make sure both are in game
-    - make placement 1 apart rule
+    - make placement 1 apart rule //no need
     -fix errors with make color
     -fix step 6
