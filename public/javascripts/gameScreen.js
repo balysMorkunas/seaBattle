@@ -41,9 +41,12 @@ function colorTable(fleet, id) {
         }
     }
 }
-
+//player A or B as string
+//enabled as boolean: 1 for enable, 0 for disable selecting interface
 function selectingInterface(player) {
+
     document.getElementById("table2").onmouseover = function (event) {
+        
         let target = event.target;
         if (!(target.classList.contains("col0")) && !(target.classList.contains("rowTop"))) {
             if (!(target.classList.contains("targeted"))) {
@@ -53,6 +56,7 @@ function selectingInterface(player) {
     };
 
     document.getElementById("table2").onmouseout = function (event) {
+        
         let target = event.target;
         if (!(target.classList.contains("col0")) && !(target.classList.contains("rowTop"))) {
             if (!(target.classList.contains("targeted"))) {
@@ -62,7 +66,7 @@ function selectingInterface(player) {
     };
 
     document.getElementById("table2").onclick = function (event) {
-
+       
         let target = event.target;
         if (!(target.classList.contains("col0")) && !(target.classList.contains("rowTop"))) {
             if (!(target.classList.contains("targeted"))) {
@@ -71,13 +75,13 @@ function selectingInterface(player) {
                 socket.send(player + "_TARGET_" + x);
                 makeColor(target.id, "gray");
                 target.classList.add("targeted");
-                
-                return;
+                    
             }
         }
     };
+
     
-    return;
+
 }
 
 
@@ -87,7 +91,9 @@ socket.onopen = function (event) {
     socket.send("READY");
     console.log("I am ready");
     socket.onmessage = function (event) {
-        if (event.data === "A_GAME" ) {
+        
+        
+        if (event.data === "A_GAME") {
             console.log("I am player A");
 
             var url_string = window.location.href;
@@ -104,9 +110,9 @@ socket.onopen = function (event) {
 
             colorTable(fleetA); //only colors first table
             document.getElementById("rowTop0").innerHTML = "pA";
-            OwnPlayer="A";
+            OwnPlayer = "A";
             document.getElementById("rowTop0.2").innerHTML = "pB";
-            OpponentPlayer= "B";
+            OpponentPlayer = "B";
 
             //selectingInterface("A");
         }
@@ -126,74 +132,100 @@ socket.onopen = function (event) {
 
             colorTable(fleetB);
             document.getElementById("rowTop0").innerHTML = "pB";
-            OwnPlayer= "B";
+            OwnPlayer = "B";
             document.getElementById("rowTop0.2").innerHTML = "pA";
             OpponentPlayer = "A";
 
 
+            //if(event.data === "B_GAME_START")
+            
+            selectingInterface("A");
             selectingInterface("B");
+            if(OwnPlayer === "A"){
+                document.getElementById("table2").style.pointerEvents = "none";
+            }
 
-
+            console.log("exiting b game start");
         }
 
-        if (event.data.includes("A_HIT") && OwnPlayer==="A") {
+        if (event.data.includes("A_HIT") && OwnPlayer === "A") {
             console.log("I hit something,yay ");
-            var x = event.data.slice(7);
-            makeColor(x+".2","red");
+            var x = event.data.slice(6);
+            makeColor(x + ".2", "red");
             //selectingInterface("A");
 
         }
 
-        if (event.data.includes("A_HIT") && OwnPlayer==="B") {
+        if (event.data.includes("A_HIT") && OwnPlayer === "B") {
             console.log("I was hit, oh no ");
-            var x = event.data.slice(7);
-            makeColor(x,"red");
+            var x = event.data.slice(6);
+            makeColor(x, "red");
             //selectingInterface("A");
 
         }
 
-        if (event.data.includes("A_MISS") && OwnPlayer==="A") {
+        if (event.data.includes("A_MISS") && OwnPlayer === "A") {
             console.log("I missed, oh no ");
-            nextTurn="B";
+            nextTurn = "B";
+            document.getElementById("table2").style.pointerEvents = "none";
             //selectingInterface("B");
         }
 
-        if (event.data.includes("A_MISS") && OwnPlayer==="B") {
+        if (event.data.includes("A_MISS") && OwnPlayer === "B") {
             console.log("I dodged, yay ");
             var x = event.data.slice(7);
-            makeColor(x,"gray");
-            nextTurn="B";
+            makeColor(x, "gray");
+            nextTurn = "B";
             //selectingInterface("A");
         }
 
-        if (event.data.includes("B_HIT") && OwnPlayer==="B") {
-            console.log("I hit something,yay ");
-            var x = event.data.slice(7);
-            makeColor(x+".2","red");
+        if (event.data.includes("B_HIT") && OwnPlayer === "B") {
+            console.log("I hit something,yay");
+            var x = event.data.slice(6);
+            console.log(x);
+            makeColor(x + ".2", "red");
             //selectingInterface("B");
 
         }
 
-        if (event.data.includes("B_HIT") && OwnPlayer==="A") {
+        if (event.data.includes("B_HIT") && OwnPlayer === "A") {
             console.log("I was hit, oh no ");
-            var x = event.data.slice(7);
-            makeColor(x,"red");
+            var x = event.data.slice(6);
+            makeColor(x, "red");
             //selectingInterface("A");
 
         }
-        if (event.data.includes("B_MISS") && OwnPlayer==="B") {
+        if (event.data.includes("B_MISS") && OwnPlayer === "B") {
             console.log("I missed, oh no ");
+            
             nextTurn = "A";
+            document.getElementById("table2").style.pointerEvents = "none";
+            
             //selectingInterface("A");
+            //selectingInterface(OwnPlayer, 0);
+            //selectingInterface(OpponentPlayer, 1);
         }
 
-        if (event.data.includes("B_MISS") && OwnPlayer==="A") {
+        if (event.data.includes("B_MISS") && OwnPlayer === "A") {
             console.log("I dodged, yay. I am player " + OwnPlayer);
             var x = event.data.slice(7);
             console.log(x);
-            makeColor(x,"gray");
-            nextTurn="B";
+            makeColor(x, "gray");
+            nextTurn = "A";
             //selectingInterface("A");
+        }
+        if (OwnPlayer == "A" || OwnPlayer == "B") {
+            console.log("getting a new selecting interface");
+            if(nextTurn === "B" && OwnPlayer === "B"){
+                document.getElementById("table2").style.pointerEvents = "all";
+                selectingInterface("B");
+                console.log("B TURN MUDDAFUCKAS");
+            }
+            if(nextTurn === "A" && OwnPlayer === "A"){
+                document.getElementById("table2").style.pointerEvents = "all";
+                selectingInterface("A");
+                console.log("A TURN MUDDAFUCKAS");
+            }
         }
     }
 

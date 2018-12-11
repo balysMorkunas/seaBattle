@@ -42,6 +42,7 @@ function checkShot(fleet1, coordinate) {
 }
 
 
+
 wss.on("connection", function connection(ws) {
 
   // setInterval(function () {
@@ -138,7 +139,7 @@ wss.on("connection", function connection(ws) {
       }
       else {
         gameObj.playerA.send("B_MISS_" + coordinate);
-        gameObj.playerA.send("B_MISS_" + coordinate);
+        gameObj.playerB.send("B_MISS_" + coordinate);
         console.log("B miss");
       }
     }
