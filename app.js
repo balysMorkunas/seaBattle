@@ -43,6 +43,7 @@ function checkShot(fleet1, coordinate) {
 
 
 
+
 wss.on("connection", function connection(ws) {
 
   // setInterval(function () {
@@ -118,12 +119,14 @@ wss.on("connection", function connection(ws) {
       if (checkShot(fleetB, coordinate)) {
         gameObj.playerA.send("A_HIT_" + coordinate);
         gameObj.playerB.send("A_HIT_" + coordinate);
+
+        gameObj.countA++;
+        if(gameObj.countA == 1) gameObj.playerA.send("A_WIN");
         console.log("A HIT");
       }
       else {
         gameObj.playerA.send("A_MISS_" + coordinate);
         gameObj.playerB.send("A_MISS_" + coordinate);
-
         console.log("A miss");
       }
 
@@ -134,6 +137,9 @@ wss.on("connection", function connection(ws) {
       if (checkShot(fleetA, coordinate)) {
         gameObj.playerA.send("B_HIT_" + coordinate);
         gameObj.playerB.send("B_HIT_" + coordinate);
+
+        gameObj.countB++;
+        if(gameObj.countB == 17) gameObj.playerB.send("B_WIN");
         console.log("B HIT");
 
       }

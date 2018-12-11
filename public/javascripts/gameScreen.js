@@ -214,6 +214,12 @@ socket.onopen = function (event) {
             nextTurn = "A";
             //selectingInterface("A");
         }
+
+        if(event.data.includes("A_WIN") && OwnPlayer == "A") {
+            alert("YOU WON");
+            console.log("A_WON");
+        }
+
         if (OwnPlayer == "A" || OwnPlayer == "B") {
             console.log("getting a new selecting interface");
             if(nextTurn === "B" && OwnPlayer === "B"){
@@ -227,6 +233,7 @@ socket.onopen = function (event) {
                 console.log("A TURN MUDDAFUCKAS");
             }
         }
+
     }
 
 };

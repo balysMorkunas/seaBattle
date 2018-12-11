@@ -3,6 +3,8 @@
 var game = function (gameID) {
     this.playerA = null;
     this.playerB = null;
+    this.countA = 0;
+    this.countB = 0;
     this.id = gameID;
     this.gameState = "0 JOINT"; //"A" means A won, "B" means B won, "ABORTED" means the game was aborted
 
