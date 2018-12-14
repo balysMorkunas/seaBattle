@@ -8,6 +8,7 @@
     <meta name="description" content="Battleships">
     <meta name="author" content="Matei">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/gameScreen.css">
 </head>
 
 <body>
@@ -16,22 +17,17 @@
 
     <header>
         <h1> Sea Battles</h1>
-        <hr>
+
         <h2> Action Text Box</h2>
     </header>
     <div id="statBox">
-        <h5>stat 1</h5>
-        <h5>stat 2</h5>
-        <h5>stat 3</h5>
-        <h5>stat 4</h5>
-        <h5>stat 5</h5>
-    </div>
-    <div id="imageBox">
-        <img alt="5shipImage" />
-        <img alt="4shipImage" />
-        <img alt="3shipImage" />
-        <img alt="3shipImage" />
-        <img alt="2shipImage" />
+        <span id="stat1">stat 1</span>
+        <span>stat 2</span>
+        <span>stat 3</span>
+        <div id ="moreStats">
+            <span>stat 4</span>
+            <span>stat 5</span>
+        </div>
     </div>
     <div>
         <table id="table1">
@@ -180,7 +176,7 @@
             </tr>
         </table>
     </div>
-   
+
     <div>
         <table id="table2">
             <tr>

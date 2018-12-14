@@ -73,9 +73,11 @@ function selectingInterface(player) {
 
 
 socket.onopen = function () {
+	document.getElementById("table2").style.opacity = "0";
 	var OwnPlayer;
 	socket.send("READY");
 	socket.onmessage = function (event) {
+		document.getElementById("table2").style.opacity = "1";
 		if (event.data.includes("A_WIN") && OwnPlayer == "A") {
 			alert("YOU WON");
 
@@ -113,7 +115,7 @@ socket.onopen = function () {
 			colorTable(fleetA); //only colors first table
 			document.getElementById("rowTop0").innerHTML = "pA";
 			OwnPlayer = "A";
-			document.getElementById("rowTop0.2").innerHTML = "pB";
+			
 
 			//selectingInterface("A");
 		}
@@ -121,11 +123,11 @@ socket.onopen = function () {
 
 		if (event.data === "B_GAME_START") {
 
-			var url_string = window.location.href;
-			var url = new URL(url_string);
-			var f = url.searchParams.get("fleet");
-			var fleetString = atob(f);
-			var fleetB = JSON.parse(fleetString);
+			let url_string = window.location.href;
+			let url = new URL(url_string);
+			let f = url.searchParams.get("fleet");
+			let fleetString = atob(f);
+			let fleetB = JSON.parse(fleetString);
 
 
 			socket.send("**B**" + fleetString);
@@ -143,7 +145,9 @@ socket.onopen = function () {
 			selectingInterface("B");
 			if (OwnPlayer === "A") {
 				document.getElementById("table2").style.pointerEvents = "none";
+				
 			}
+			
 
 
 		}

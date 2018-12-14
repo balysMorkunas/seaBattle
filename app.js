@@ -84,6 +84,8 @@ wss.on("connection", function connection(ws) {
 			//console.log(playerType);
 			//console.log(websockets[con.id]);
 			//console.log(con.id);
+
+			console.log("Player %s placed in game %s as %s", con.id, currentGame.id, playerType);
 		}
 
 
