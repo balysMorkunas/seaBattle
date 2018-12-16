@@ -1,5 +1,7 @@
+@import "style.css";
+
 body {
-    background-color:#DDDDDD;
+    background-color: var(--defaultColor);
 }
 td{
     width: 3em;

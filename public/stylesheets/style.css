@@ -2,20 +2,16 @@
     --defaultColor : #DDDDDD;
 }
 td{
-    width: 2em;
-    height: 2em;
+    width: 3em;
+    height: 3em;
     border-style: solid;
     border-width: 1px;
     padding: 0;
     margin: 0;
 }
 table{
+    background-color: white;
     border-spacing: 0;
     display: inline-block; 
-}
-#table1{
-    position:relative;
-    float: left;
-    margin-right: 3em;
 }
 
