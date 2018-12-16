@@ -3,28 +3,22 @@
 body {
     background-color: var(--defaultColor);
 }
-td{
-    width: 3em;
-    height: 3em;
-    border-style: solid;
-    border-width: 1px;
-    padding: 0;
-    margin: 0;
-}
-table{
-    background-color: white;
-    border-spacing: 0;
-    display: inline-block; 
+
+
+* {
+    box-sizing: border-box;
 }
 #rowTop0 {
     background: #DDDDDD;
     border: 0px;
 }
+
 #table1{
      float: left; 
      margin-left: 14em; 
      margin-top: 6em;
 }
+
 #tablebox {
 
     
@@ -35,7 +29,7 @@ table{
     position: relative;
     top: 50%;
     float: right;
-    width: 10%;
+    width: 17%;
     right: 5%;
 }
 
