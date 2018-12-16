@@ -1,3 +1,14 @@
+body{
+    /* overflow: auto; */
+    background-color: var(--defaultColor);
+}
+
+#div1, #div2{
+    display: inline-block;
+}
+
+
+
 h1{
     position: relative;
     float: left;
@@ -50,7 +61,7 @@ span:nth-child(-n+3){
     clear: both;
 }
 
-#table2{
+#div2{
     float: right;
     margin-right: 12em;
     

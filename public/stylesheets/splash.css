@@ -1,36 +1,35 @@
 @import "style.css";
 
-body {
-    background-color: var(--defaultColor);
-}
-
-
-* {
-    box-sizing: border-box;
-}
 #rowTop0 {
     background: #DDDDDD;
     border: 0px;
 }
 
 #table1{
-     float: left; 
+     /* float: left;  */
      margin-left: 14em; 
-     margin-top: 6em;
+     margin-top: 10em;
 }
-
-#tablebox {
-
-    
-    
+.column {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  /* overflow-x: hidden; */
+  padding-top: 20px;
+}
+#leftSide {
+    left: 0;
 }
 
 #rightSide {
-    position: relative;
-    top: 50%;
-    float: right;
-    width: 17%;
-    right: 5%;
+ 
+    background: #444444; 
+    /* position: relative; */
+    /* top: 50%; */
+    right: 0;
+    width: 30%;
+
 }
 
 .but {
@@ -40,18 +39,41 @@ body {
     display: inline-block;
     padding: 15px 32px;
     margin: 20px;
-    height:50px;
-    width:200px;
+    height:70px;
+    width: 200px;
+    font-size: 12pt;
+}
+.smallButt {
+    background-color: #FF6347;
+    border: none;
+    text-align: center;
+    display: inline-block;
+    /* padding: 15px 32px; */
+    margin: 20px;
+    height:30px;
+    width: 100px;
+    font-size: 12pt;
+}
+.bottom button:first-child{
+    width: 3%;
+}
+.rbut button:last-child{
+    margin-top: 7em;
+    font-size: 15pt;
 }
 .but:hover {
     background-color: rgb(168, 75, 59);
-
-
 }
 .but:active {
     border: solid;
 }
-#bottom {
-   
+.rbut {
+    position: relative;
+    left: 10em;
+    top: 10em;
+    width: 200px;
+}
 
+.bottom {
+    
 }
