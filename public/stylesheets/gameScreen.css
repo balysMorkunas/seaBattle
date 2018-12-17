@@ -7,8 +7,6 @@ body{
     display: inline-block;
 }
 
-
-
 h1{
     position: relative;
     float: left;
@@ -63,12 +61,12 @@ span:nth-child(-n+3){
 
 #div2{
     float: right;
-    margin-right: 12em;
+    margin-right: 5%;
     
 }
-#table1{
-    margin-left: 12em;
-    animation: show 5s;
+#div1{
+    margin-left: 5%;
+    animation: show 2s;
 }
 header h2::after{
     content: "!";

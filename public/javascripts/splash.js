@@ -58,14 +58,14 @@ Fleet.prototype.addShip = function (shipObj) {
 //These methods are for changing color of specific objects (specified in the argument)
 function makeGreen(id) {
 	if (!(id.includes("rowTop0"))) {
-		document.getElementById(id).style.backgroundColor = "green";
+		document.getElementById(id).style.backgroundColor = "#FF6347";
 	}
 }
 function makeBlue(id) {
-	document.getElementById(id).style.backgroundColor = "blue";
+	document.getElementById(id).style.backgroundColor = "#444444";
 }
 function makeWhite(id) {
-	document.getElementById(id).style.backgroundColor = "white";
+	document.getElementById(id).style.backgroundColor = "#e7e3e3";
 }
 
 function makeRed(id) {
@@ -131,6 +131,20 @@ document.getElementById("rotate").onclick = function () {
 	//console.log(vertical);
 };
 
+document.getElementById("fullbutton").onclick = function(){
+	var doc = document.documentElement;
+
+  if (doc.requestFullscreen) {
+    doc.requestFullscreen();
+  } else if (doc.webkitRequestFullscreen) {
+    doc.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+  } else if (doc.mozRequestFullScreen) {
+    doc.mozRequestFullScreen();
+  }
+
+  return false;
+
+}
 
 //This function colors the appropriate amount of ship cells when hovored over
 document.getElementById("table1").onmouseover = function (event) {
@@ -325,9 +339,37 @@ document.getElementById("reset").onclick = function () {
 };
 
 document.getElementById("startButton").onclick = function () {
-	
+
 	var myFleet = JSON.stringify(fleet1);
 	var encodedFleet = btoa(myFleet);
 	window.location.href = "/play?fleet=" + encodedFleet;
-   
+
 };
+
+var elem = document.documentElement;
+
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) { /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE/Edge */
+    document.msExitFullscreen();
+  }
+}

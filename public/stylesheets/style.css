@@ -1,5 +1,18 @@
 :root {
-    --defaultColor : #DDDDDD;
+    --defaultColor : #d6cacaf5;
+    --headerColor  : #FF6347;
+}
+hr {
+    border: none;
+    height: 3px;
+    background-color: #444444; /* Modern Browsers */
+}
+body {
+    background-color: var(--defaultColor);
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    color: var(--headerColor);
 }
 td{
     width: 3em;
@@ -10,8 +23,8 @@ td{
     margin: 0;
 }
 table{
-    background-color: white;
+    background-color: #e7e3e3;
     border-spacing: 0;
-   
 }
+
 

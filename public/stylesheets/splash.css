@@ -1,79 +1,192 @@
 @import "style.css";
 
 #rowTop0 {
-    background: #DDDDDD;
+    background: var(--defaultColor);
     border: 0px;
 }
+.logo {
+    font-size: 20pt;  
+    position: relative;
+    z-index: 2;
+    transition: font-size 1s;
 
+}
+.logo:hover {
+    font-size: 40pt;
+    transition: font-size 1s;
+}
+.container p::first-line {
+    font-size: 15pt;
+
+}
 #table1{
-     /* float: left;  */
-     margin-left: 14em; 
-     margin-top: 10em;
+     position: absolute;
+     top: 25%;
+     left: 35%;
 }
 .column {
   height: 100%;
   width: 50%;
   position: fixed;
-  top: 0;
-  /* overflow-x: hidden; */
-  padding-top: 20px;
+  top: 0%;
+  padding-top: 3%;
 }
 #leftSide {
     left: 0;
 }
 
 #rightSide {
- 
     background: #444444; 
     /* position: relative; */
-    /* top: 50%; */
     right: 0;
     width: 30%;
-
 }
-
 .but {
-    background-color: #FF6347;
+    background-color: var(--headerColor);
     border: none;
     text-align: center;
     display: inline-block;
-    padding: 15px 32px;
-    margin: 20px;
-    height:70px;
-    width: 200px;
+    padding: 10% 16%;
+    margin: 10%;
+    height:29%;
+    width: 100%;
     font-size: 12pt;
 }
-.smallButt {
-    background-color: #FF6347;
+.smallButton {
+
+    background-color:var(--headerColor);
     border: none;
     text-align: center;
     display: inline-block;
     /* padding: 15px 32px; */
-    margin: 20px;
+    margin: 5px;
     height:30px;
     width: 100px;
     font-size: 12pt;
 }
 .bottom button:first-child{
-    width: 3%;
+    width: 30px;
+    
 }
-.rbut button:last-child{
+.bottom {
+    position: relative;
+    top: 80%;
+    left: 34.5%;
+    /* top: 100%; */
+    
+}
+.buttonsRight button:last-child{
     margin-top: 7em;
     font-size: 15pt;
+
+   
+}
+#startButton:enabled {
+    animation-name: bounce;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 .but:hover {
-    background-color: rgb(168, 75, 59);
+    background-color: #a84b3b;
 }
 .but:active {
     border: solid;
 }
-.rbut {
-    position: relative;
+.buttonsRight {
+    position: absolute;
     left: 10em;
     top: 10em;
     width: 200px;
 }
+.stats p {
+    display: inline-block;
+    font-size: 12pt;
+    font-weight: 900;
+}
+.stats p::first-letter {
+    color: #FF6347;
+}
+.stats {
+    position: absolute;
+    /* top: 90%; */
+    bottom: 0;
+    left: 1%;
+}
 
-.bottom {
-    
+#full p{
+    position: absolute;
+    left:26%;
+}
+
+#full:not(:-webkit-full-screen){
+    position: absolute;
+    left: 30%;
+    height: 50px;
+    width: 400px;
+    background-color: #FF6347;
+    opacity: 0;
+
+}
+
+
+html:-webkit-full-screen #full{
+    position: absolute;
+    left: 30%;
+    opacity: 1;
+    animation: show 5s;
+    opacity: 0;
+}
+
+
+#full:not(:-moz-full-screen){
+    position: absolute;
+    left: 30%;
+    height: 50px;
+    width: 400px;
+    background-color: #FF6347;
+    opacity: 0;
+
+}
+
+
+html:-moz-full-screen #full{
+    position: absolute;
+    left: 30%;
+    opacity: 1;
+    animation: show 5s;
+    opacity: 0;
+}
+
+#screenalert{
+    opacity: 0;
+    position: absolute;
+    height: 200px;
+    width:300px;
+}
+#screenalert p{
+    font-size: 30pt;
+}
+
+@media screen and (max-width:1247px), screen and (max-height:940px) {
+    body{
+        background-color: black;
+    }
+    #screenalert{
+        opacity: 1;
+        background-color: red;
+    }
+}
+
+
+
+@keyframes bounce {
+    from{background-color: #FF6347;}
+    to {background-color: rgb(126, 212, 77);}
+}
+
+@keyframes show {
+    0%{opacity: 1}
+    80%{opacity: 1}
+    100%{opacity: 0}
 }

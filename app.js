@@ -7,17 +7,14 @@ var websocket = require("ws");
 var Game = require("./public/game");
 
 var cookies = require("cookie-parser");
-var credentials = require("./credentials.js");
 var fleetA, fleetB;
 var port = process.argv[2];
 var app = express();
-
-
-app.use(cookies(credentials.cookieSecret));
+app.use(cookies());
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-	let cnt = 0;
-	if(req.cookies){
+	let cnt = 0; //in case of no cookie
+	if(req.signedCookies){
 		cnt = parseInt(req.cookies.nr_visited);
 	}
 	if(isNaN(cnt))
@@ -62,17 +59,6 @@ function checkShot(fleet1, coordinate) {
 
 
 wss.on("connection", function connection(ws) {
-
-	// setInterval(function () {
-	//   console.log("Connection state: " + ws.readyState);
-	//   ws.send("Thanks for the message. -- Server.");
-	//   ws.close();
-	//   console.log("Connection state: " + ws.readyState);
-	// }, 2000);
-	// ws.on("message", function incoming(message) {
-	//   console.log("[LOG]" + message);
-
-	// });
 
 	let con = ws;
 	con.id = connectionID++;

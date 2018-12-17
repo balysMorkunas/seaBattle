@@ -25,7 +25,7 @@ function colorTable(fleet) {
 			var x = ship.shipCoordinates[j];
 
 			document.getElementById(x).classList.add("ship");
-			makeColor(x, "blue");
+			makeColor(x, "#444444");
 		}
 	}
 }
@@ -38,7 +38,7 @@ function selectingInterface(player) {
 		var target = event.target;
 		if (!(target.classList.contains("col0")) && !(target.classList.contains("rowTop"))) {
 			if (!(target.classList.contains("targeted"))) {
-				makeColor(target.id, "green");
+				makeColor(target.id, "#FF6347");
 			}
 		}
 	};
@@ -48,7 +48,7 @@ function selectingInterface(player) {
 		var target = event.target;
 		if (!(target.classList.contains("col0")) && !(target.classList.contains("rowTop"))) {
 			if (!(target.classList.contains("targeted"))) {
-				makeColor(target.id, "white");
+				makeColor(target.id, "#FFFFFF98");
 			}
 		}
 	};
@@ -67,10 +67,7 @@ function selectingInterface(player) {
 		}
 	};
 
-
-
 }
-
 
 socket.onopen = function () {
 	document.getElementById("table2").style.opacity = "0";
