@@ -36,7 +36,7 @@ td{
     padding: 1em;
     margin: 0.1em;  
     margin-top: 2em;
-    background-color: chocolate
+    background-color: #FF6347
 }
 #statBox span:first-child{
     margin-right: 12em;
@@ -53,7 +53,7 @@ span:nth-child(-n+3){
 #moreStats span{
     padding: 0.2 em;
     margin: 0.1em;
-    background-color: chocolate;
+    background-color: #FF6347;
 }
 #imageBox{
     clear: both;

@@ -29,7 +29,7 @@ function colorTable(fleet) {
 		}
 	}
 }
-//player A or B as string
+//player A or B as string#
 //enabled as boolean: 1 for enable, 0 for disable selecting interface
 function selectingInterface(player) {
 
@@ -38,7 +38,7 @@ function selectingInterface(player) {
 		var target = event.target;
 		if (!(target.classList.contains("col0")) && !(target.classList.contains("rowTop"))) {
 			if (!(target.classList.contains("targeted"))) {
-				makeColor(target.id, "#FF6347");
+				makeColor(target.id, "#444444");
 			}
 		}
 	};
@@ -48,7 +48,7 @@ function selectingInterface(player) {
 		var target = event.target;
 		if (!(target.classList.contains("col0")) && !(target.classList.contains("rowTop"))) {
 			if (!(target.classList.contains("targeted"))) {
-				makeColor(target.id, "#FFFFFF98");
+				makeColor(target.id, "#e7e3e3");
 			}
 		}
 	};
