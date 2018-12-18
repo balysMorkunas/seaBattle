@@ -149,7 +149,7 @@ wss.on("connection", function connection(ws) {
 				gameObj.countB++;
 				if (gameObj.countB == 17) {
 					gameObj.playerB.send("B_WIN");
-					gameObj.playerA.send("A_WIN");
+					gameObj.playerA.send("B_WIN");
 					gameStatus.gamesCompleted++;
 				}
 

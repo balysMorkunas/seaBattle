@@ -68,6 +68,17 @@ function selectingInterface(player) {
 	};
 
 }
+//true for myturn, false for opponent's turn
+function actionTurn(myTurn){
+	if(myTurn === true){
+		document.getElementById("actionBox").innerHTML = "My turn";
+	}
+	if(myTurn === false){
+		document.getElementById("actionBox").innerHTML = "Opponent turn";
+	}
+	
+
+}
 
 socket.onopen = function () {
 	document.getElementById("table2").style.opacity = "0";
@@ -110,8 +121,9 @@ socket.onopen = function () {
 
 
 			colorTable(fleetA); //only colors first table
-			document.getElementById("rowTop0").innerHTML = "pA";
+			document.getElementById("rowTop0").innerHTML = "";
 			OwnPlayer = "A";
+			actionTurn(false);
 			
 
 			//selectingInterface("A");
@@ -130,14 +142,14 @@ socket.onopen = function () {
 			socket.send("**B**" + fleetString);
 
 			colorTable(fleetB);
-			document.getElementById("rowTop0").innerHTML = "pB";
+			document.getElementById("rowTop0").innerHTML = "";
 			OwnPlayer = "B";
-			document.getElementById("rowTop0.2").innerHTML = "pA";
+			document.getElementById("rowTop0.2").innerHTML = "";
 
 
 
 			//if(event.data === "B_GAME_START")
-
+			actionTurn(true);
 			selectingInterface("A");
 			selectingInterface("B");
 			if (OwnPlayer === "A") {
@@ -153,6 +165,7 @@ socket.onopen = function () {
 
 			let x = event.data.slice(6);
 			makeColor(x + ".2", "red");
+			//actionTurn(true);
 			//selectingInterface("A");
 
 		}
@@ -161,6 +174,7 @@ socket.onopen = function () {
 
 			let x = event.data.slice(6);
 			makeColor(x, "red");
+			actionTurn(false);
 			//selectingInterface("A");
 
 		}
@@ -169,6 +183,7 @@ socket.onopen = function () {
 
 			nextTurn = "B";
 			document.getElementById("table2").style.pointerEvents = "none";
+			actionTurn(false);
 			//selectingInterface("B");
 		}
 
@@ -177,6 +192,7 @@ socket.onopen = function () {
 			let x = event.data.slice(7);
 			makeColor(x, "gray");
 			nextTurn = "B";
+			//actionTurn(true);
 			//selectingInterface("A");
 		}
 
@@ -185,6 +201,7 @@ socket.onopen = function () {
 			let x = event.data.slice(6);
 
 			makeColor(x + ".2", "red");
+			//actionTurn(true);
 			//selectingInterface("B");
 
 		}
@@ -193,6 +210,7 @@ socket.onopen = function () {
 
 			let x = event.data.slice(6);
 			makeColor(x, "red");
+			actionTurn(false);
 			//selectingInterface("A");
 
 		}
@@ -201,7 +219,7 @@ socket.onopen = function () {
 
 			nextTurn = "A";
 			document.getElementById("table2").style.pointerEvents = "none";
-
+			actionTurn(false);
 			//selectingInterface("A");
 			//selectingInterface(OwnPlayer, 0);
 			//selectingInterface(OpponentPlayer, 1);
@@ -211,6 +229,7 @@ socket.onopen = function () {
 			let x = event.data.slice(7);
 			makeColor(x, "gray");
 			nextTurn = "A";
+			//actionTurn(true);
 			//selectingInterface("A");
 		}
 
@@ -221,11 +240,12 @@ socket.onopen = function () {
 			if (nextTurn === "B" && OwnPlayer === "B") {
 				document.getElementById("table2").style.pointerEvents = "all";
 				selectingInterface("B");
-
+				actionTurn(true);
 			}
 			if (nextTurn === "A" && OwnPlayer === "A") {
 				document.getElementById("table2").style.pointerEvents = "all";
 				selectingInterface("A");
+				actionTurn(true);
 
 			}
 		}

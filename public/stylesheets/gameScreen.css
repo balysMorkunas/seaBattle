@@ -72,6 +72,12 @@ header h2::after{
     content: "!";
 }
 
+#rowTop0, #rowTop0\.2{
+    background-color: var(--defaultColor);
+    border: none;
+    
+}
+
 @keyframes show {
     from{
         opacity: 0

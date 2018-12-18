@@ -4,24 +4,17 @@
 
 <head>
     <meta charset="utf-8">
+
     <title>Sea Battles</title>
     <meta name="description" content="Battleships">
-    <meta name="author" content="">
+    <meta name="author" content="Balys">
     <link rel="stylesheet" type="text/css" href="stylesheets/splash.css">
 </head>
 
 <body>
     <header>
-        <div class="container">
-            <h1 class="logo">Sea Battles</h1>
-            <p>The Ultimate Multiplayer Battleship Game</p>
-        </div>
-        <div id="full">
-            <p id="fullParagraph">You are in fullscreen mode!</p>
-        </div>
-        <div id="screenalert">
-            <p id="fullParagraph">Device is too small sorry</p>
-        </div>
+        <h1>Sea Battles</h1>
+        <p>The Ultimate Multiplayer Battleship Game</p>
         <hr>
     </header>
     <div class="row">
@@ -174,27 +167,26 @@
             </table>
             <!-- div for bottom general info-->
             <div class="bottom">
-                <button type="button" id="reset" class="smallButton">&#8634;</button>
+                <button type="button" id="reset" class="smallButt" >&#8634;</button>
                 <!-- code is for an arrow symbol-->
-                <button type="button" id="rotate" class="smallButton">Rotate</button>
+                <button type="button" id="rotate" class="smallButt">Rotate</button>
+                <p>Total ships sunk: </p>
+                <p>Battles happening now:</p>
+                <p>Total battle count since begining of time: </p>
             </div>
         </div>
 
         <!-- div for grey area with buttons -->
         <div id="rightSide" class="column">
-            <div class="buttonsRight">
+            <div class = "rbut">
                 <button type="button" class="but">Randomize</button>
-                <button type="button" class="but" id="fullbutton">Fullscreen</button>
-
+                <button type="button" class="but">Players</button>
                 <button id="temp" type="button" class="but">Rules</button>
                 <button id="startButton" type="button" class="but">START</button>
             </div>
         </div>
-        <div class="stats">
-            <p>Total ships sunk: </p>
-            <p>Battles happening now: </p>
-            <p>Total battle count since begining of time: </p>
-        </div>
+
+
     </div>
     <script src="javascripts/splash.js" type=""></script>
 </body>
