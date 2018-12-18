@@ -131,20 +131,20 @@ document.getElementById("rotate").onclick = function () {
 	//console.log(vertical);
 };
 
-document.getElementById("fullbutton").onclick = function(){
+document.getElementById("fullbutton").onclick = function () {
 	var doc = document.documentElement;
 
-  if (doc.requestFullscreen) {
-    doc.requestFullscreen();
-  } else if (doc.webkitRequestFullscreen) {
-    doc.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-  } else if (doc.mozRequestFullScreen) {
-    doc.mozRequestFullScreen();
-  }
+	if (doc.requestFullscreen) {
+		doc.requestFullscreen();
+	} else if (doc.webkitRequestFullscreen) {
+		doc.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+	} else if (doc.mozRequestFullScreen) {
+		doc.mozRequestFullScreen();
+	}
 
-  return false;
+	return false;
 
-}
+};
 
 //This function colors the appropriate amount of ship cells when hovored over
 document.getElementById("table1").onmouseover = function (event) {
@@ -336,6 +336,7 @@ document.getElementById("reset").onclick = function () {
 	shipSizesCnt = 0;
 	id = 0;
 	fleet1 = new Fleet(1);
+	document.getElementById("startButton").disabled = true;
 };
 
 document.getElementById("startButton").onclick = function () {
@@ -346,30 +347,5 @@ document.getElementById("startButton").onclick = function () {
 
 };
 
-var elem = document.documentElement;
 
-/* View in fullscreen */
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
-    elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
-    elem.msRequestFullscreen();
-  }
-}
 
-/* Close fullscreen */
-function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.mozCancelFullScreen) { /* Firefox */
-    document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE/Edge */
-    document.msExitFullscreen();
-  }
-}

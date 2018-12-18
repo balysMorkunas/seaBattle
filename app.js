@@ -1,7 +1,7 @@
 var express = require("express");
 var http = require("http");
 var indexRouter = require("./routes/index");
-//var messages = require("./public/javascripts/messages");
+var messages = require("./public/javascripts/messages");
 var gameStatus = require("./stats.js");
 var websocket = require("ws");
 var Game = require("./public/game");
@@ -70,7 +70,7 @@ wss.on("connection", function connection(ws) {
 		if (event.data === "READY") {
 			let playerType = currentGame.addPlayer(con);
 
-			if (playerType === "A") {
+			if (playerType === messages.O_PLAYER_A.data) {
 
 				ws.send("A_GAME");
 
